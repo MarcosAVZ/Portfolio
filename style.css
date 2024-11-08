@@ -13,8 +13,9 @@
     --color-terciario: #6f6f6f;
     --color-contraste: #fefefe;
     /* Tamaños */
-    --presentacion-titulo-tamanio: 4.5vw;
-    --presentacion-descripcion-tamanio: 3vw;
+    --presentacion-titulo-tamanio: 6vh;
+    --presentacion-descripcion-tamanio: 6vmin;
+    --presentacion-enlaces-tamanio: 4vmin;
     --titulo-tamanio: 3rem;
     --sub-titulo-tamanio: 2rem;
     --texto-tamanio: 1.1rem;
@@ -60,8 +61,8 @@ body{
     gap: 3rem;
     background-image: linear-gradient(
         90deg, 
-        var(--color-primario) 45%,
-        transparent 70%
+        var(--color-primario) 90vmin,
+        transparent 200vmin
     ),url("imagenes/imagen_fondo.webp");
     background-size: cover;
     background-repeat: no-repeat;
@@ -70,7 +71,7 @@ body{
 .navegacion{
     width: 100vw;
     height: 10vh;
-    margin-top: 10vh;
+    margin-top: 4vh;
     display: flex;
     align-items: center;
     background-color: transparent;
@@ -79,7 +80,7 @@ body{
 .navegacion__titulo{
     background-color: var(--color-secundario);
     border-radius: 0px 10px 10px 0px;
-    padding: 10px;
+    padding: 1vh;
     padding-left: 10%;
     margin-right: 10px;
     text-shadow: 2px 2px 2px 2px var(--fondo-transparente);
@@ -88,7 +89,7 @@ body{
 .presentacion__titulo{
     font-size: var(--presentacion-titulo-tamanio);
     color: var(--texto-primario);
-    width: 50vw;
+    width: 81vmax;
     height: 20vh;
     text-shadow: 
         -2px -2px 0 #000,  
@@ -101,42 +102,108 @@ body{
 
 
 .presentacion__parrafo{
-    width: 70vw;
+    width: 58vmax;
     height: 20vh;
     font-size: var(--presentacion-descripcion-tamanio);
     color: var(--texto-secundario);
     text-wrap: pretty;
     padding-left: 10%;
+    margin-bottom: 2vmax;
+    margin-top: -1vmax;
 }
 
 .enlaces{
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    align-content: center;
+    align-items: center;
+    padding-left: 8%;
     height: 40vh;
-    padding-left: 10%;
-    font-size: 20px;
-    text-decoration: none;
-    text-shadow: 2px 2px 4px rgb(255, 78, 78);
-    border-radius: 8px; /* Bordes redondeados */
-    width: max-content; /* Tamaño ajustado al contenido */
+    font-size: var(--presentacion-enlaces-tamanio);
+    text-shadow: 2px 2px 4px rgb(0, 0, 0);
+    border-radius: 8px;
+    flex-wrap: wrap;
+    justify-content: start;
 }       
 
-.enlaces__item{
-    list-style: none;
-    margin-bottom: 15px;
+.enlaces__enlace {
+    text-decoration: none;
+    padding: 1vw;
+    padding-left: 1vw;
 }
-
-#item_linkedin{
-    grid-column: 1 / 2;
-    grid-row: 1 / 3;
-}
-
 
 .enlaces__enlace:hover {
-    color: rgb(252, 100, 100); 
-    text-decoration: underline; /* Añade subrayado en hover */
+    color: var(--color-terciario); 
     transition: color 0.3s ease; /* Suaviza el cambio de color */
+}
+
+.enlaces__item{
+    text-decoration: none;
+    list-style: none;
+    margin-bottom: 15px;
+    text-align: center;
+    background-color: rgb(33, 13, 105);;
+    border: 1px solid rgb(255, 255, 255);
+    margin: 2vmax;
+    padding: 2vw;
+    border-radius: 30px;
+    margin: top 1vw;
+}
+
+#link_sobre_mi {
+
+}
+
+#link_proyectos {
+    
+}
+
+#link_tecnologias {
+    
+}
+
+#link_linkedin {
+    
+}
+
+
+
+
+
+
+
+
+@media (max-width: 1200px){
+    .presentacion__parrafo{
+        width: 85vw;
+    }
+
+    .presentacion__contenedor_info{
+
+        background-image: linear-gradient(
+            90deg, 
+            var(--color-primario) 0vmin,
+            transparent 200vmin
+        ),url("imagenes/imagen_fondo.webp");
+
+    }
+
+}
+
+@media (max-width: 850px){
+
+    .presentacion__titulo{
+        width: 45vmax;
+    }
+
+    .presentacion__parrafo{
+        width: 75vw;
+    }
+
+
+    .enlaces{
+        width: 60vw;
+    }
 }
 
 .articulo{
@@ -220,3 +287,8 @@ body{
     var(--fondo-primario)55%);
     height: max-content;
 }
+
+
+
+
+
