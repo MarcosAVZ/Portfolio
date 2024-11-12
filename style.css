@@ -59,11 +59,18 @@ body{
     justify-content: center;
     align-items: flex-start;
     gap: 3rem;
-    background-image: linear-gradient(
-        90deg, 
-        var(--color-primario) 90vmin,
-        transparent 200vmin
-    ),url("imagenes/imagen_fondo.webp");
+    background-image: 
+        linear-gradient(
+            90deg, 
+            var(--color-primario) 90vmin,
+            transparent 200vmin
+        ),
+        linear-gradient(
+            to top, 
+            var(--color-primario), 5vmin,
+            transparent
+        ),
+        url("imagenes/imagen_fondo.webp");
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -184,6 +191,11 @@ body{
             90deg, 
             var(--color-primario) 0vmin,
             transparent 200vmin
+        ),
+        linear-gradient(
+            to top, 
+            var(--color-primario), 5vmin,
+            transparent
         ),url("imagenes/imagen_fondo.webp");
 
     }
@@ -213,72 +225,51 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    align-items: center;
-    gap: 1rem;
+    background-color: var(--color-primario);
+    justify-content: flex-end;
 }
 
 .sobre_mi{
-    background: linear-gradient(180deg, rgb(15 8 16) 0%,
-    var(--fondo-primario) 10%,
-    var(--color-primario-apagado)75%,
-    var(--color-primario)90%);
+    align-items: center;
+
 }
 
-.articulo__titulo{
-    font-size: var(--titulo-tamanio);
-    text-align: center;
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 2px 2px var(--fondo-secundario);
-}
+
 
 .articulo__contenedor_descripcion{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 10px;
+    display: flex;
+    gap: 10px; /* Separacion entre las secciones */
     height: 80vh;
-    width: 80%;
+    width: 100vw;
+    align-items: center;
+    flex-direction: row-reverse;
+    background-color: black;
 }
 
 .sobre-mi__descripcion{
-    grid-column: 1 / 2;
-    grid-row: 1 / 3;
-    background-color: var(--color-contraste);
-    border-radius: 10px;
     display: flex;
+    width: 60vw;
+    height: 60vh;
     align-items: center;
     justify-content: center;
     text-align:justify;
     padding: 40px;
-    color: var(--texto-contraste);
+    color: var(--color-contraste);
+    margin-right: 5vw;
 }
 
 .imagen_descripcion{
-    width: 100%;
-    height: 100%;
+    background-color: #6f6f6f;
+    width: 40vw;
+    height: 60vh;
     display: flex;
     align-items: center;
-    justify-content: center;
-    background-size: cover;
-    background-position: center;
-    
-}
-
-#imagen_descripcion_1{
-    grid-column: 2 / 3; 
-    grid-row: 1 / 2;    
-    background-image: url(imagenes/imagen\ 1.webp);
+    background-image: url(imagenes/mejora.png);
     background-size: cover;
     border-radius: 10px;
 }
 
-#imagen_descripcion_2{
-    grid-column: 2 / 3; 
-    grid-row: 2 / 3;
-    background-image: url(imagenes/imagen\ 2.webp);
-    background-size: cover;
-    border-radius: 10px;
-}
+
 
 .proyectos{
     background: linear-gradient(180deg, rgb(15 8 16) 0%,
