@@ -3,7 +3,9 @@
     /* colores */
     --texto-primario: #dddddd;
     --texto-secundario: #d1d1d1;
-    --texto-contraste: #000000;
+    --texto-contraste: #290F56;
+    --texto-contenedor-border: #59018C ;
+
     --fondo-primario: #0f0921;
     --fondo-primario-transparente: #0f092180;
     --fondo-secundario: #0a0c13;
@@ -44,6 +46,27 @@ body{
     position: relative;
 }
 
+nav{
+    display: flex;
+    justify-content: center
+}
+
+.navegador{
+    position: fixed;
+    display: flex;
+    margin-top: 30px;
+    background-color: black;
+    border: 1px solid white;
+    border-radius: 30px;
+
+}
+
+.navegador__item{
+    list-style: none;
+    text-align: center;
+    margin: 5px;
+}
+
 .presentacion{
     width: 100%;    
     height: 100%;
@@ -57,14 +80,12 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     gap: 3rem;
     background-image: 
-        linear-gradient(
-            90deg, 
-            var(--color-primario) 90vmin,
-            transparent 200vmin
-        ),
+        radial-gradient(
+            circle at 50% 50%, #150742b0  100%, #0000005b 50%, #07206b9f 100%
+            ),
         linear-gradient(
             to top, 
             var(--color-primario), 5vmin,
@@ -82,29 +103,26 @@ body{
     display: flex;
     align-items: center;
     background-color: transparent;
+    justify-content: center;
 }
 
 .navegacion__titulo{
-    background-color: var(--color-secundario);
-    border-radius: 0px 10px 10px 0px;
+    background-color: var(--texto-contraste);
+    border: solid 1px var(--texto-contenedor-border);
+    border-radius: 10px;
     padding: 1vh;
-    padding-left: 10%;
     margin-right: 10px;
     text-shadow: 2px 2px 2px 2px var(--fondo-transparente);
+    text-shadow: var(--texto-contenedor-border);
+    -webkit-text-stroke: 0.5px var(--color-primario);
 }
 
 .presentacion__titulo{
     font-size: var(--presentacion-titulo-tamanio);
     color: var(--texto-primario);
-    width: 81vmax;
     height: 20vh;
-    text-shadow: 
-        -2px -2px 0 #000,  
-        2px -2px 0 #000,
-        -2px  2px 0 #000,
-        2px  2px 0 #000;
     text-shadow: 2px 2px 4px rgba(199, 29, 29, 0.733);
-    padding-left: 10%;
+    margin-top: 20vh;
 }
 
 
@@ -114,23 +132,19 @@ body{
     font-size: var(--presentacion-descripcion-tamanio);
     color: var(--texto-secundario);
     text-wrap: pretty;
-    padding-left: 10%;
     margin-bottom: 2vmax;
     margin-top: -1vmax;
+    text-align: center;
 }
 
 .enlaces{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    align-content: center;
+    display: flex;
     align-items: center;
-    padding-left: 8%;
     height: 40vh;
     font-size: var(--presentacion-enlaces-tamanio);
     text-shadow: 2px 2px 4px rgb(0, 0, 0);
-    border-radius: 8px;
-    flex-wrap: wrap;
-    justify-content: start;
+    border-radius: 8px; 
+    flex-direction: row-reverse
 }       
 
 .enlaces__enlace {
@@ -139,50 +153,36 @@ body{
     padding-left: 1vw;
 }
 
-.enlaces__enlace:hover {
+.enlaces__item:hover {
     color: var(--color-terciario); 
     transition: color 0.3s ease; /* Suaviza el cambio de color */
 }
 
 .enlaces__item{
-    text-decoration: none;
+    display: flex;
+    align-items: center;
     list-style: none;
     margin-bottom: 15px;
     text-align: center;
-    background-color: rgb(33, 13, 105);;
-    border: 1px solid rgb(255, 255, 255);
+    background-color: var(--texto-contraste);
+    border: 2px solid var(--texto-contenedor-border);
     margin: 2vmax;
-    padding: 2vw;
     border-radius: 30px;
     margin: top 1vw;
+    padding-left: 10px;
 }
 
-#link_sobre_mi {
-
+.enlaces__item img{
+    max-width: 5vw;
+    max-height: 5vh;
+    margin-right: -0.8vw;
 }
-
-#link_proyectos {
-    
-}
-
-#link_tecnologias {
-    
-}
-
-#link_linkedin {
-    
-}
-
-
-
-
-
-
-
 
 @media (max-width: 1200px){
     .presentacion__parrafo{
         width: 85vw;
+        text-align: start;
+        padding-left: 10%;
     }
 
     .presentacion__contenedor_info{
@@ -199,23 +199,52 @@ body{
         ),url("imagenes/imagen_fondo.webp");
 
     }
+    .enlaces{
+        flex-direction: column-reverse;
+        height: 40vh;
+    }   
 
 }
 
 @media (max-width: 850px){
 
     .presentacion__titulo{
-        width: 45vmax;
+        width: 60vw;
+        padding-left: 7%;
     }
 
     .presentacion__parrafo{
-        width: 75vw;
+        width: 100vw;
     }
 
 
     .enlaces{
-        width: 60vw;
+        height: 40vh;
     }
+}
+
+@media (max-width: 600px){
+
+    .presentacion__titulo{
+        padding-left: 3%;
+    }
+
+    .enlaces{
+        height: 20vh;
+    }
+    
+}
+
+@media (max-width: 400px){
+
+    .presentacion__titulo{
+        padding-left: 2%;
+    }
+
+    .presentacion__parrafo{
+        width: 65vw;
+    }
+    
 }
 
 .articulo{
