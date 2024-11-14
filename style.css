@@ -247,56 +247,44 @@ nav{
     
 }
 
-.articulo{
-    width: 100%;
-    height: 100vh;
-    padding: 2rem 10rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    background-color: var(--color-primario);
-    justify-content: flex-end;
-}
 
 .sobre_mi{
-    align-items: center;
-
-}
-
-
-
-.articulo__contenedor_descripcion{
     display: flex;
-    gap: 10px; /* Separacion entre las secciones */
-    height: 80vh;
-    width: 100vw;
-    align-items: center;
-    flex-direction: row-reverse;
-    background-color: black;
-}
-
-.sobre-mi__descripcion{
-    display: flex;
-    width: 60vw;
-    height: 60vh;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    text-align:justify;
-    padding: 40px;
-    color: var(--color-contraste);
-    margin-right: 5vw;
+    align-items: center;
+    height: 100vh;
+    margin-left: 30%;
+    margin-right: 30%;
+    gap: 10px;
 }
 
-.imagen_descripcion{
-    background-color: #6f6f6f;
-    width: 40vw;
-    height: 60vh;
+.sobre_mi_titulo{
+    width: 100%;
+}
+
+.sobre_mi_titulo h2{
+
+}
+
+.sobre_mi_parrafo_imagen{
     display: flex;
     align-items: center;
-    background-image: url(imagenes/mejora.png);
-    background-size: cover;
-    border-radius: 10px;
 }
+.sobre_mi_parrafo_imagen img{
+    width: 90%;
+    height: 90%;
+}
+
+
+.sobre_mi_parrafos{
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+}
+
 
 
 
