@@ -12,7 +12,7 @@ const config: Config = {
     },
     extend: {
       fontFamily: {
-        display: ['"Instrument Serif"', ...fontFamily.serif],
+        display: ['Outfit', ...fontFamily.sans],
         sans: ['Inter', ...fontFamily.sans],
         mono: ['"JetBrains Mono"', ...fontFamily.mono],
       },
