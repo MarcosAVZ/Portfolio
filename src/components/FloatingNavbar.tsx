@@ -9,9 +9,10 @@ const NAV_LINKS = [
   { label: 'Skills', href: '#skills' },
   { label: 'Proyectos', href: '#projects' },
   { label: 'Experiencia', href: '#experience' },
+  { label: 'Contacto', href: '#contact' },
 ]
 
-const SECTION_IDS = ['about', 'skills', 'projects', 'experience']
+const SECTION_IDS = ['about', 'skills', 'projects', 'experience', 'contact']
 
 export function FloatingNavbar() {
   const [scrolled, setScrolled] = useState(false)

@@ -25,6 +25,7 @@ const NAV_LINKS = [
   { label: 'Skills', href: '#skills' },
   { label: 'Proyectos', href: '#projects' },
   { label: 'Experiencia', href: '#experience' },
+  { label: 'Contacto', href: '#contact' },
 ]
 
 export function Footer() {

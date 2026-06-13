@@ -5,6 +5,7 @@ import { AboutSection } from '@/sections/AboutSection'
 import { SkillsSection } from '@/sections/SkillsSection'
 import { ProjectsSection } from '@/sections/ProjectsSection'
 import { ExperienceTimeline } from '@/sections/ExperienceTimeline'
+import { ContactSection } from '@/sections/ContactSection'
 import { Footer } from '@/sections/Footer'
 
 export function App() {
@@ -25,6 +26,7 @@ export function App() {
         <ExperienceTimeline />
       </main>
 
+      <ContactSection />
       <Footer />
     </>
   )
