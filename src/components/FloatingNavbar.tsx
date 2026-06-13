@@ -59,7 +59,7 @@ export function FloatingNavbar() {
           <div
             className={cn(
               'flex items-center justify-between rounded-2xl px-5 py-3 transition-all duration-500',
-              scrolled && 'glass shadow-lg shadow-black/30',
+              scrolled && 'bg-background shadow-lg shadow-black/30 border-b border-border/40',
             )}
           >
             {/* Logo */}
@@ -70,17 +70,12 @@ export function FloatingNavbar() {
               whileHover={{ scale: 1.02 }}
             >
               <span
-                className="inline-flex size-8 items-center justify-center rounded-lg text-sm font-black"
-                style={{
-                  background: 'rgba(124,255,232,0.12)',
-                  border: '1px solid rgba(124,255,232,0.25)',
-                  color: '#7cffe8',
-                }}
+                className="inline-flex size-8 items-center justify-center rounded-lg text-sm font-black bg-muted border-border text-foreground"
               >
                 MA
               </span>
               <span className="text-foreground/90 group-hover:text-foreground transition-colors">
-                Marcos<span className="text-accent">.</span>
+                Marcos<span className="text-foreground">.</span>
               </span>
             </motion.a>
 
@@ -97,21 +92,10 @@ export function FloatingNavbar() {
                     className={cn(
                       'relative px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300',
                       isActive
-                        ? 'text-accent'
+                        ? 'text-foreground bg-muted border border-border'
                         : 'text-muted-foreground hover:text-foreground',
                     )}
                   >
-                    {isActive && (
-                      <motion.span
-                        layoutId="nav-indicator"
-                        className="absolute inset-0 rounded-xl"
-                        style={{
-                          background: 'rgba(124,255,232,0.08)',
-                          border: '1px solid rgba(124,255,232,0.15)',
-                        }}
-                        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                      />
-                    )}
                     <span className="relative z-10">{label}</span>
                   </a>
                 )
@@ -122,7 +106,7 @@ export function FloatingNavbar() {
             <div className="flex items-center gap-3">
               <a
                 href="mailto:marcosavanzatti@gmail.com"
-                className="hidden md:inline-flex btn-primary items-center gap-2 text-sm"
+                className="hidden md:inline-flex btn-ghost items-center gap-2 text-sm"
               >
                 Contacto
               </a>
@@ -157,12 +141,12 @@ export function FloatingNavbar() {
           >
             {/* Backdrop */}
             <div
-              className="absolute inset-0 bg-background/90 backdrop-blur-xl"
+              className="absolute inset-0 bg-background backdrop-blur-xl"
               onClick={() => setMenuOpen(false)}
             />
             {/* Menu panel */}
             <motion.div
-              className="absolute top-20 left-4 right-4 glass-elevated rounded-2xl p-6 flex flex-col gap-2"
+              className="absolute top-20 left-4 right-4 bg-[#0d0d0d] border border-border rounded-2xl p-6 flex flex-col gap-2"
               initial={{ opacity: 0, y: -10, scale: 0.97 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -8, scale: 0.97 }}
@@ -173,7 +157,7 @@ export function FloatingNavbar() {
                   key={href}
                   href={href}
                   onClick={(e) => { e.preventDefault(); handleNavClick(href) }}
-                  className="flex items-center px-4 py-3 rounded-xl font-medium text-foreground/80 hover:text-accent hover:bg-accent/5 transition-all"
+                  className="flex items-center px-4 py-3 rounded-xl font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-all"
                   initial={{ opacity: 0, x: -12 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.07, duration: 0.3 }}
@@ -184,7 +168,7 @@ export function FloatingNavbar() {
               <div className="border-t border-border/50 my-2" />
               <a
                 href="mailto:marcosavanzatti@gmail.com"
-                className="btn-primary text-center"
+                className="btn-ghost text-center"
                 onClick={() => setMenuOpen(false)}
               >
                 Contacto

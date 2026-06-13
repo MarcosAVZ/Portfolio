@@ -14,7 +14,5 @@ export const projects: Project[] = [
     demo: 'https://mrrollers.com/',
     video: null,
     poster: null,
-    gradient: 'from-teal-950 via-emerald-950 to-slate-950',
-    accentColor: '#4CFFD0',
   }
 ]

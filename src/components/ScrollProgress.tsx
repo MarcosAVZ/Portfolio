@@ -10,7 +10,7 @@ export function ScrollProgress() {
       className="fixed top-0 left-0 right-0 z-[60] h-[2px] origin-left"
       style={{
         scaleX: progress,
-        background: 'linear-gradient(90deg, #7cffe8 0%, #a78bfa 50%, #60a5fa 100%)',
+        background: 'rgba(255,255,255,0.15)',
       }}
       aria-hidden="true"
     />

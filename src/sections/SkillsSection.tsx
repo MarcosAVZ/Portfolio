@@ -19,34 +19,20 @@ function SkillCard({ category, index }: { category: SkillCategory; index: number
   return (
     <motion.div
       variants={staggerItem}
-      className="group relative glass rounded-2xl p-6 transition-all duration-300"
-      style={{ border: '1px solid rgba(255,255,255,0.06)' }}
+      className="group relative bg-card border border-border rounded-2xl p-6 transition-all duration-300"
       whileHover={{
         y: -4,
         borderColor: 'rgba(255,255,255,0.12)',
         transition: { duration: 0.25 },
       }}
     >
-      {/* Glow background on hover */}
-      <div
-        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-        style={{ background: category.accent }}
-      />
-
       <div className="relative z-10">
         {/* Header */}
         <div className="flex items-center gap-3 mb-5">
           <div
-            className="inline-flex size-10 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110"
-            style={{
-              background: category.accent,
-              border: `1px solid ${category.accent.replace('0.12', '0.3')}`,
-            }}
+            className="inline-flex size-10 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110 bg-muted border-border"
           >
-            <Icon
-              size={18}
-              style={{ color: 'hsl(var(--accent))' }}
-            />
+            <Icon size={18} className="text-foreground" />
           </div>
           <div>
             <h3 className="font-display font-semibold text-sm text-foreground">{category.name}</h3>
@@ -76,22 +62,15 @@ function SkillCard({ category, index }: { category: SkillCategory; index: number
               }}
               viewport={{ once: true }}
               whileHover={{
-                background: category.accent,
-                borderColor: 'rgba(124,255,232,0.2)',
-                color: 'hsl(var(--foreground))',
+                background: 'rgba(255,255,255,0.06)',
+                borderColor: 'rgba(255,255,255,0.2)',
+                color: '#fafafa',
                 scale: 1.04,
               }}
             >
               {name}
             </motion.span>
           ))}
-        </div>
-
-        {/* Index decoration */}
-        <div
-          className="absolute top-4 right-4 font-mono text-xs opacity-20 group-hover:opacity-40 transition-opacity"
-        >
-          {String(index + 1).padStart(2, '0')}
         </div>
       </div>
     </motion.div>
@@ -105,10 +84,10 @@ export function SkillsSection() {
         {/* Header */}
         <SectionReveal className="mb-16">
           <div className="flex items-center gap-4 mb-4">
-            <span className="font-mono text-accent text-sm">02.</span>
+            <span className="font-mono text-muted-foreground text-sm">02.</span>
             <div className="h-px flex-1 bg-border/50 max-w-[80px]" />
           </div>
-          <h2 className="font-display font-bold text-3xl md:text-4xl lg:text-5xl mb-4 text-gradient-warm">
+          <h2 className="font-display font-bold text-3xl md:text-4xl lg:text-5xl mb-4 text-foreground">
             Stack técnico
           </h2>
           <p className="text-muted-foreground max-w-xl leading-relaxed">
@@ -129,11 +108,11 @@ export function SkillsSection() {
           ))}
         </motion.div>
 
-        {/* Bottom accent line */}
+        {/* Bottom text */}
         <SectionReveal delay={0.3} className="mt-16 text-center">
           <p className="text-muted-foreground text-sm">
             Siempre aprendiendo.{' '}
-            <span className="text-accent font-mono">
+            <span className="text-foreground/80 font-mono">
               En constante evolución.
             </span>
           </p>

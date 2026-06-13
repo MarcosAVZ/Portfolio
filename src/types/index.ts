@@ -9,8 +9,6 @@ export interface Project {
   demo: string | null
   video: string | null
   poster: string | null
-  gradient: string
-  accentColor: string
 }
 
 export interface SkillItem {
@@ -23,7 +21,6 @@ export interface SkillCategory {
   icon: string
   description: string
   skills: SkillItem[]
-  accent: string
 }
 
 export interface TimelineEntry {

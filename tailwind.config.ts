@@ -12,8 +12,8 @@ const config: Config = {
     },
     extend: {
       fontFamily: {
-        display: ['Syne', ...fontFamily.sans],
-        sans: ['Outfit', ...fontFamily.sans],
+        display: ['"Instrument Serif"', ...fontFamily.serif],
+        sans: ['Inter', ...fontFamily.sans],
         mono: ['"JetBrains Mono"', ...fontFamily.mono],
       },
       colors: {
@@ -48,29 +48,8 @@ const config: Config = {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
-      animation: {
-        float: 'float 8s ease-in-out infinite',
-        'glow-pulse': 'glow-pulse 3s ease-in-out infinite',
-        'spin-slow': 'spin 20s linear infinite',
-        shimmer: 'shimmer 2.5s linear infinite',
-      },
-      keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-18px)' },
-        },
-        'glow-pulse': {
-          '0%, 100%': { opacity: '0.4' },
-          '50%': { opacity: '0.9' },
-        },
-        shimmer: {
-          '0%': { backgroundPosition: '-200% center' },
-          '100%': { backgroundPosition: '200% center' },
-        },
-      },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-      },
+      animation: {},
+      keyframes: {},
     },
   },
   plugins: [],

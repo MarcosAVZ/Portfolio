@@ -1,4 +1,3 @@
-import { AnimatedBackground } from '@/components/AnimatedBackground'
 import { FloatingNavbar } from '@/components/FloatingNavbar'
 import { ScrollProgress } from '@/components/ScrollProgress'
 import { HeroSection } from '@/sections/HeroSection'
@@ -11,9 +10,6 @@ import { Footer } from '@/sections/Footer'
 export function App() {
   return (
     <>
-      {/* Fixed background */}
-      <AnimatedBackground />
-
       {/* Scroll progress bar */}
       <ScrollProgress />
 

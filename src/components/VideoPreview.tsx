@@ -71,40 +71,18 @@ export function VideoPreview({ project, onOpenModal }: VideoPreviewProps) {
         />
       )}
 
-      {/* Gradient poster (always visible, fades when video is loaded+hovered) */}
+      {/* Solid poster background */}
       <div
         className={cn(
-          'absolute inset-0 transition-opacity duration-700',
+          'absolute inset-0 transition-opacity duration-700 bg-[#111]',
           project.video && isLoaded && isHovered ? 'opacity-0' : 'opacity-100',
-          `bg-gradient-to-br ${project.gradient}`,
         )}
       >
-        {/* Decorative pattern */}
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: `radial-gradient(circle at 30% 30%, ${project.accentColor}33 0%, transparent 50%)`,
-          }}
-        />
-
-        {/* Grid lines */}
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px)
-            `,
-            backgroundSize: '40px 40px',
-          }}
-        />
-
         {/* Project name centered */}
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center">
             <p
-              className="font-display font-bold text-2xl tracking-tight mb-1"
-              style={{ color: project.accentColor }}
+              className="font-display font-bold text-2xl tracking-tight mb-1 text-foreground"
             >
               {project.title}
             </p>
@@ -136,19 +114,17 @@ export function VideoPreview({ project, onOpenModal }: VideoPreviewProps) {
               <div
                 className="flex items-center justify-center size-14 rounded-full"
                 style={{
-                  background: `${project.accentColor}22`,
-                  border: `2px solid ${project.accentColor}88`,
-                  boxShadow: `0 0 30px ${project.accentColor}44`,
+                  background: 'rgba(255,255,255,0.1)',
+                  border: '2px solid rgba(255,255,255,0.6)',
                 }}
               >
                 {project.video ? (
                   <Play
                     size={20}
-                    fill={project.accentColor}
-                    style={{ color: project.accentColor }}
+                    className="text-white fill-white"
                   />
                 ) : (
-                  <ExternalLink size={18} style={{ color: project.accentColor }} />
+                  <ExternalLink size={18} className="text-white" />
                 )}
               </div>
               <span className="text-white/80 text-xs font-medium tracking-wide">
@@ -159,14 +135,13 @@ export function VideoPreview({ project, onOpenModal }: VideoPreviewProps) {
         )}
       </AnimatePresence>
 
-      {/* Accent border on hover */}
+      {/* Border on hover */}
       <div
         className="absolute inset-0 rounded-xl pointer-events-none transition-all duration-300"
         style={{
           border: isHovered
-            ? `1px solid ${project.accentColor}55`
+            ? '1px solid rgba(255,255,255,0.10)'
             : '1px solid rgba(255,255,255,0.06)',
-          boxShadow: isHovered ? `inset 0 0 30px ${project.accentColor}11` : 'none',
         }}
       />
     </div>
