@@ -48,26 +48,17 @@ function TimelineEntryCard({ entry, index, isLast }: TimelineEntryCardProps) {
       <div className="flex flex-col items-center shrink-0">
         {/* Icon */}
         <motion.div
-          className="relative z-10 flex items-center justify-center size-10 rounded-xl shrink-0"
-          style={{
-            background: isWork ? 'rgba(124,255,232,0.1)' : 'rgba(167,139,250,0.1)',
-            border: `1px solid ${isWork ? 'rgba(124,255,232,0.25)' : 'rgba(167,139,250,0.25)'}`,
-          }}
+          className="relative z-10 flex items-center justify-center size-10 rounded-xl shrink-0 bg-muted border-border"
           initial={{ opacity: 0, scale: 0.6 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: index * 0.15, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
         >
           {isWork ? (
-            <Briefcase size={17} style={{ color: '#7cffe8' }} />
+            <Briefcase size={17} className="text-foreground" />
           ) : (
-            <GraduationCap size={17} style={{ color: '#a78bfa' }} />
+            <GraduationCap size={17} className="text-foreground" />
           )}
-          {/* Glow */}
-          <div
-            className="absolute inset-0 rounded-xl opacity-50 blur-md"
-            style={{ background: isWork ? 'rgba(124,255,232,0.15)' : 'rgba(167,139,250,0.15)' }}
-          />
         </motion.div>
 
         {/* Connecting line */}
@@ -75,9 +66,7 @@ function TimelineEntryCard({ entry, index, isLast }: TimelineEntryCardProps) {
           <motion.div
             className="w-px flex-1 mt-3"
             style={{
-              background: isWork
-                ? 'linear-gradient(to bottom, rgba(124,255,232,0.3) 0%, rgba(124,255,232,0.05) 100%)'
-                : 'linear-gradient(to bottom, rgba(167,139,250,0.3) 0%, rgba(167,139,250,0.05) 100%)',
+              background: 'rgba(255,255,255,0.08)',
               minHeight: '60px',
               transformOrigin: 'top',
             }}
@@ -99,19 +88,13 @@ function TimelineEntryCard({ entry, index, isLast }: TimelineEntryCardProps) {
       >
         {/* Year badge */}
         <span
-          className="inline-block font-mono text-xs mb-3 px-3 py-1 rounded-full"
-          style={{
-            background: isWork ? 'rgba(124,255,232,0.07)' : 'rgba(167,139,250,0.07)',
-            color: isWork ? '#7cffe8' : '#a78bfa',
-            border: `1px solid ${isWork ? 'rgba(124,255,232,0.15)' : 'rgba(167,139,250,0.15)'}`,
-          }}
+          className="inline-block font-mono text-xs mb-3 px-3 py-1 rounded-full bg-muted border-border text-muted-foreground"
         >
           {entry.year}
         </span>
 
         <div
-          className="glass rounded-2xl p-6"
-          style={{ border: '1px solid rgba(255,255,255,0.06)' }}
+          className="bg-card border border-border rounded-2xl p-6"
         >
           <h3 className="font-display font-bold text-lg mb-1 text-foreground">
             {entry.title}
@@ -133,8 +116,7 @@ function TimelineEntryCard({ entry, index, isLast }: TimelineEntryCardProps) {
               >
                 <CheckCircle2
                   size={14}
-                  className="mt-0.5 shrink-0"
-                  style={{ color: isWork ? '#7cffe8' : '#a78bfa' }}
+                  className="mt-0.5 shrink-0 text-muted-foreground"
                 />
                 {item}
               </motion.li>
@@ -171,10 +153,10 @@ export function ExperienceTimeline() {
         {/* Header */}
         <SectionReveal className="mb-16">
           <div className="flex items-center gap-4 mb-4">
-            <span className="font-mono text-accent text-sm">04.</span>
+            <span className="font-mono text-muted-foreground text-sm">04.</span>
             <div className="h-px flex-1 bg-border/50 max-w-[80px]" />
           </div>
-          <h2 className="font-display font-bold text-3xl md:text-4xl lg:text-5xl mb-4 text-gradient-warm">
+          <h2 className="font-display font-bold text-3xl md:text-4xl lg:text-5xl mb-4 text-foreground">
             Trayectoria
           </h2>
           <p className="text-muted-foreground max-w-xl leading-relaxed">

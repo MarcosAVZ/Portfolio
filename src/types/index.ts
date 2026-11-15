@@ -8,9 +8,9 @@ export interface Project {
   github: string | null
   demo: string | null
   video: string | null
+  /** ID de un video de YouTube (ej. 'YrrGykJb8ek'); se embebe con iframe. */
+  youtube: string | null
   poster: string | null
-  gradient: string
-  accentColor: string
 }
 
 export interface SkillItem {
@@ -23,7 +23,6 @@ export interface SkillCategory {
   icon: string
   description: string
   skills: SkillItem[]
-  accent: string
 }
 
 export interface TimelineEntry {

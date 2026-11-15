@@ -73,7 +73,7 @@ export function VideoModal({ project, onClose }: VideoModalProps) {
             <motion.div
               className={cn(
                 'relative w-full max-w-4xl rounded-2xl overflow-hidden',
-                'glass-elevated',
+                'bg-[#0d0d0d] border border-white/10',
                 'shadow-2xl shadow-black/60',
               )}
               variants={modalContent}
@@ -92,8 +92,7 @@ export function VideoModal({ project, onClose }: VideoModalProps) {
               >
                 <div className="flex items-center gap-3">
                   <div
-                    className="size-2 rounded-full animate-glow-pulse"
-                    style={{ background: project.accentColor }}
+                    className="size-2 rounded-full bg-muted-foreground"
                   />
                   <span className="font-display font-semibold text-sm">
                     {project.title}
@@ -123,8 +122,17 @@ export function VideoModal({ project, onClose }: VideoModalProps) {
               </div>
 
               {/* Video / Poster area */}
-              <div className={cn('relative w-full aspect-video', `bg-gradient-to-br ${project.gradient}`)}>
-                {project.video ? (
+              <div className="relative w-full aspect-video bg-[#111]">
+                {project.youtube ? (
+                  <iframe
+                    className="absolute inset-0 w-full h-full"
+                    src={`https://www.youtube-nocookie.com/embed/${project.youtube}?autoplay=1&rel=0&modestbranding=1`}
+                    title={`Demo de ${project.title}`}
+                    allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+                    allowFullScreen
+                    referrerPolicy="strict-origin-when-cross-origin"
+                  />
+                ) : project.video ? (
                   <video
                     ref={videoRef}
                     className="absolute inset-0 w-full h-full object-cover"
@@ -137,15 +145,10 @@ export function VideoModal({ project, onClose }: VideoModalProps) {
                   /* Placeholder when no video */
                   <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
                     <div
-                      className="flex items-center justify-center size-20 rounded-2xl"
-                      style={{
-                        background: `${project.accentColor}18`,
-                        border: `1px solid ${project.accentColor}40`,
-                      }}
+                      className="flex items-center justify-center size-20 rounded-2xl bg-muted border-border"
                     >
                       <span
-                        className="font-display font-black text-3xl"
-                        style={{ color: project.accentColor }}
+                        className="font-display font-black text-3xl text-foreground"
                       >
                         {project.title.charAt(0)}
                       </span>
@@ -182,21 +185,23 @@ export function VideoModal({ project, onClose }: VideoModalProps) {
                 </div>
 
                 <div className="flex md:flex-col gap-3 items-start">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-ghost flex items-center gap-2 whitespace-nowrap"
-                  >
-                    <Github size={15} />
-                    GitHub
-                  </a>
-                  {project.demo && (
+                  {project.github && (
                     <a
-                      href={project.demo}
+                      href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn-primary flex items-center gap-2 whitespace-nowrap"
+                      className="btn-ghost flex items-center gap-2 whitespace-nowrap"
+                    >
+                      <Github size={15} />
+                      GitHub
+                    </a>
+                  )}
+                  {project.demo && (
+                    <a
+                      href={project.demo ?? undefined}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-ghost flex items-center gap-2 whitespace-nowrap"
                     >
                       <ExternalLink size={15} />
                       Demo live
