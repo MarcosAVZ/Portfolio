@@ -1,25 +1,79 @@
 import { type FormEvent, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Send, Check, Loader2 } from 'lucide-react'
+import DOMPurify from 'dompurify'
+import { z } from 'zod'
 import { SectionReveal } from '@/components/SectionReveal'
 import { staggerContainer, staggerItem } from '@/animations/variants'
 
-const FORMSPREE_URL = 'https://formspree.io/f/xxxxxxxx' // 👈 Reemplazá con tu endpoint de Formspree
+const FORMSPREE_URL = import.meta.env.VITE_FORMSPREE_URL
+const CONTACT_EMAIL = 'marcosavanzatti@gmail.com'
+
+const contactSchema = z.object({
+  name: z.string().min(2, 'El nombre debe tener al menos 2 caracteres').max(100),
+  email: z.string().email('Email inválido'),
+  message: z.string().min(10, 'El mensaje debe tener al menos 10 caracteres').max(1000),
+})
 
 export function ContactSection() {
-  const [status, setStatus] = useState<'idle' | 'sending' | 'sent'>('idle')
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
+
+  const fail = (message: string) => {
+    setErrorMessage(message)
+    setStatus('error')
+  }
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setStatus('sending')
+    setErrorMessage(null)
 
     const form = e.currentTarget
     const data = new FormData(form)
 
+    // Honeypot: si este campo está lleno, es un bot
+    const website = data.get('website')
+    if (website) {
+      setStatus('idle')
+      return
+    }
+
+    // Validación con Zod
+    const raw = {
+      name: (data.get('name') as string) ?? '',
+      email: (data.get('email') as string) ?? '',
+      message: (data.get('message') as string) ?? '',
+    }
+
+    const result = contactSchema.safeParse(raw)
+    if (!result.success) {
+      fail(result.error.issues.map(err => err.message).join(', '))
+      return
+    }
+
+    // Sin endpoint configurado no hay a dónde enviar: ofrecer el email directo
+    if (!FORMSPREE_URL) {
+      fail(`El formulario no está disponible. Escribime a ${CONTACT_EMAIL}`)
+      return
+    }
+
+    // Sanitización con DOMPurify
+    const cleanData = {
+      name: DOMPurify.sanitize(result.data.name),
+      email: DOMPurify.sanitize(result.data.email),
+      message: DOMPurify.sanitize(result.data.message),
+    }
+
+    const cleanFormData = new FormData()
+    cleanFormData.append('name', cleanData.name)
+    cleanFormData.append('email', cleanData.email)
+    cleanFormData.append('message', cleanData.message)
+
     try {
       const res = await fetch(FORMSPREE_URL, {
         method: 'POST',
-        body: data,
+        body: cleanFormData,
         headers: { Accept: 'application/json' },
       })
 
@@ -27,12 +81,10 @@ export function ContactSection() {
         setStatus('sent')
         form.reset()
       } else {
-        alert('Error al enviar. Intentalo de nuevo.')
-        setStatus('idle')
+        fail('Error al enviar. Intentalo de nuevo.')
       }
     } catch {
-      alert('Error de conexión. Intentalo de nuevo.')
-      setStatus('idle')
+      fail('Error de conexión. Intentalo de nuevo.')
     }
   }
 
@@ -86,6 +138,24 @@ export function ContactSection() {
             viewport={{ once: true, amount: 0.2 }}
             className="space-y-5"
           >
+            {/* Honeypot — campo invisible para bots */}
+            <input
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              className="hidden"
+              style={{ display: 'none' }}
+            />
+
+            {errorMessage && (
+              <div
+                role="alert"
+                className="p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-sm"
+              >
+                {errorMessage}
+              </div>
+            )}
+
             <motion.div variants={staggerItem} className="space-y-1.5">
               <label
                 htmlFor="name"
