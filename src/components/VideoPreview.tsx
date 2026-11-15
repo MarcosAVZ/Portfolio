@@ -15,6 +15,7 @@ export function VideoPreview({ project, onOpenModal }: VideoPreviewProps) {
   const [isHovered, setIsHovered] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
+  const hasDemo = Boolean(project.video || project.youtube)
 
   // IntersectionObserver for viewport autoplay
   useEffect(() => {
@@ -78,7 +79,16 @@ export function VideoPreview({ project, onOpenModal }: VideoPreviewProps) {
           project.video && isLoaded && isHovered ? 'opacity-0' : 'opacity-100',
         )}
       >
-        {/* Project name centered */}
+        {project.poster ? (
+          <img
+            src={project.poster}
+            alt={`Portada de ${project.title}`}
+            className="absolute inset-0 w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+        ) : (
+        /* Project name centered */
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center">
             <p
@@ -91,6 +101,7 @@ export function VideoPreview({ project, onOpenModal }: VideoPreviewProps) {
             </p>
           </div>
         </div>
+        )}
       </div>
 
       {/* Hover overlay with play button */}
@@ -118,7 +129,7 @@ export function VideoPreview({ project, onOpenModal }: VideoPreviewProps) {
                   border: '2px solid rgba(255,255,255,0.6)',
                 }}
               >
-                {project.video ? (
+                {hasDemo ? (
                   <Play
                     size={20}
                     className="text-white fill-white"
@@ -128,7 +139,7 @@ export function VideoPreview({ project, onOpenModal }: VideoPreviewProps) {
                 )}
               </div>
               <span className="text-white/80 text-xs font-medium tracking-wide">
-                {project.video ? 'Ver demo' : 'Ver detalles'}
+                {hasDemo ? 'Ver demo' : 'Ver detalles'}
               </span>
             </motion.div>
           </motion.div>

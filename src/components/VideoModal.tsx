@@ -123,7 +123,16 @@ export function VideoModal({ project, onClose }: VideoModalProps) {
 
               {/* Video / Poster area */}
               <div className="relative w-full aspect-video bg-[#111]">
-                {project.video ? (
+                {project.youtube ? (
+                  <iframe
+                    className="absolute inset-0 w-full h-full"
+                    src={`https://www.youtube-nocookie.com/embed/${project.youtube}?autoplay=1&rel=0&modestbranding=1`}
+                    title={`Demo de ${project.title}`}
+                    allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+                    allowFullScreen
+                    referrerPolicy="strict-origin-when-cross-origin"
+                  />
+                ) : project.video ? (
                   <video
                     ref={videoRef}
                     className="absolute inset-0 w-full h-full object-cover"
@@ -176,15 +185,17 @@ export function VideoModal({ project, onClose }: VideoModalProps) {
                 </div>
 
                 <div className="flex md:flex-col gap-3 items-start">
-                  <a
-                    href={project.github ?? undefined}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-ghost flex items-center gap-2 whitespace-nowrap"
-                  >
-                    <Github size={15} />
-                    GitHub
-                  </a>
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-ghost flex items-center gap-2 whitespace-nowrap"
+                    >
+                      <Github size={15} />
+                      GitHub
+                    </a>
+                  )}
                   {project.demo && (
                     <a
                       href={project.demo ?? undefined}

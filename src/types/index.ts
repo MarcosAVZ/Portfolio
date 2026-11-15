@@ -8,6 +8,8 @@ export interface Project {
   github: string | null
   demo: string | null
   video: string | null
+  /** ID de un video de YouTube (ej. 'YrrGykJb8ek'); se embebe con iframe. */
+  youtube: string | null
   poster: string | null
 }
 
