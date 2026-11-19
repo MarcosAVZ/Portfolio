@@ -2,11 +2,12 @@ import type { Project } from '@/types'
 import markethubPoster from '@/assets/projects/markethub-poster.jpg'
 import consultorioPoster from '@/assets/projects/consultorio-poster.jpg'
 import fs0003Poster from '@/assets/projects/fs0003-poster.jpg'
+import openbridgePoster from '@/assets/projects/openbridge-poster.jpg'
 
 export const projects: Project[] = [
   {
     id: 1,
-    title: 'MarketHub',
+    title: 'MR Roller',
     description:
       'Plataforma e-commerce completa con carrito, checkout, gestión de pedidos y panel administrativo integrado.',
     longDescription:
@@ -18,6 +19,21 @@ export const projects: Project[] = [
     video: null,
     youtube: 'YrrGykJb8ek',
     poster: markethubPoster,
+  },
+  {
+    id: 4,
+    title: 'OpenBridge',
+    description:
+      'Catálogo de herramientas open source con un asistente RAG que recomienda un stack según la descripción del negocio.',
+    longDescription:
+      'OpenBridge es un catálogo de más de 100 repositorios open source validados, con métricas de salud y mantenimiento que se actualizan todos los días. Su asistente con IA toma la descripción de un negocio, la descompone en capacidades técnicas y propone un stack armado solo con componentes verificados del catálogo. Lo desarrollamos en equipo dentro de la Simulación Laboral de NoCountry.\n\nMi parte estuvo en el backend y la IA: armé el monorepo con workspaces y Postgres con pgvector en Docker; diseñé el esquema de repositorios, categorías, ideas de integración y embeddings con Drizzle y un índice HNSW; construí la ingesta desde la API GraphQL de GitHub con manejo de rate limit, reintentos y reanudación; generé ideas de integración con un LLM local (Ollama + LangChain.js) con prompts versionados y validación de esquema; implementé la búsqueda por significado con embeddings y la búsqueda full-text; y desarrollé el asistente que descompone el negocio en capacidades y hace streaming de la propuesta, rankeando candidatos por similitud, salud y popularidad. También configuré el CI y el deploy en Render con Neon.\n\nStack: Next.js + React + Tailwind en el frontend; Node.js + Express en TypeScript con Zod en el backend; PostgreSQL + pgvector con Drizzle ORM; Ollama (qwen2.5 y bge-m3) con LangChain.js; tests con Vitest y supertest.',
+    tech: ['TypeScript', 'Next.js', 'Express', 'PostgreSQL', 'pgvector', 'LangChain', 'Ollama', 'Docker'],
+    tags: ['IA / RAG', 'Full Stack', 'Trabajo en equipo'],
+    github: 'https://github.com/No-Country-simulation/S10-26-equipo-8-OpenBridge',
+    demo: 'https://openbridge-blue.vercel.app',
+    video: null,
+    youtube: null,
+    poster: openbridgePoster,
   },
   {
     id: 2,
