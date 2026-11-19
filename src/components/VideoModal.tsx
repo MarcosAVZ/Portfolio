@@ -68,8 +68,9 @@ export function VideoModal({ project, onClose }: VideoModalProps) {
             aria-hidden="true"
           />
 
-          {/* Modal content */}
-          <div className="fixed inset-0 z-[101] flex items-center justify-center p-4 md:p-8">
+          {/* Modal content: scrolls when it is taller than the viewport */}
+          <div className="fixed inset-0 z-[101] overflow-y-auto" onClick={onClose}>
+            <div className="flex min-h-full items-center justify-center p-4 md:p-8">
             <motion.div
               className={cn(
                 'relative w-full max-w-4xl rounded-2xl overflow-hidden',
@@ -141,6 +142,12 @@ export function VideoModal({ project, onClose }: VideoModalProps) {
                     controls
                     playsInline
                   />
+                ) : project.poster ? (
+                  <img
+                    className="absolute inset-0 w-full h-full object-cover"
+                    src={project.poster}
+                    alt={`Portada de ${project.title}`}
+                  />
                 ) : (
                   /* Placeholder when no video */
                   <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
@@ -164,7 +171,7 @@ export function VideoModal({ project, onClose }: VideoModalProps) {
               {/* Info panel */}
               <div className="p-6 grid md:grid-cols-[1fr_auto] gap-6">
                 <div>
-                  <p className="text-foreground/80 text-sm leading-relaxed mb-4">
+                  <p className="text-foreground/80 text-sm leading-relaxed whitespace-pre-line mb-4">
                     {project.longDescription}
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -210,6 +217,7 @@ export function VideoModal({ project, onClose }: VideoModalProps) {
                 </div>
               </div>
             </motion.div>
+            </div>
           </div>
         </>
       )}
