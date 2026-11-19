@@ -3,6 +3,7 @@ import markethubPoster from '@/assets/projects/markethub-poster.jpg'
 import consultorioPoster from '@/assets/projects/consultorio-poster.jpg'
 import fs0003Poster from '@/assets/projects/fs0003-poster.jpg'
 import openbridgePoster from '@/assets/projects/openbridge-poster.jpg'
+import meetflowPoster from '@/assets/projects/meetflow-poster.jpg'
 
 export const projects: Project[] = [
   {
@@ -32,8 +33,23 @@ export const projects: Project[] = [
     github: 'https://github.com/No-Country-simulation/S10-26-equipo-8-OpenBridge',
     demo: 'https://openbridge-blue.vercel.app',
     video: null,
-    youtube: null,
+    youtube: 'ctNL2OpHzaI',
     poster: openbridgePoster,
+  },
+  {
+    id: 5,
+    title: 'MeetFlow',
+    description:
+      'App de videollamadas con reuniones inmediatas o programadas, invitaciones por correo y agenda personal.',
+    longDescription:
+      'MeetFlow es una aplicación web de videollamadas: permite iniciar una reunión al instante y compartir el enlace, programar reuniones con fecha y configuración, invitar participantes por correo y unirse con un código. Lo desarrollamos en equipo dentro de la Simulación Laboral de NoCountry.\n\nMi parte estuvo en el backend: armé la estructura base de la API en Express con arquitectura MVC y los modelos de datos con Prisma; integré GetStream del lado del servidor para emitir tokens, crear salas, manejar permisos, transferir el rol de anfitrión y recibir webhooks; desarrollé la API completa de salas con agenda, el flujo para unirse a una reunión, las invitaciones por correo (backend y frontend), la recuperación de contraseña y la foto de perfil del usuario, que también se muestra dentro de la reunión.\n\nStack: Next.js + React + Tailwind en el frontend; Node.js + Express 5 con Prisma y PostgreSQL (Neon) en el backend; GetStream para video, JWT y bcrypt para autenticación, Cloudinary para imágenes, tests con Vitest y Docker con deploy continuo a Render y Vercel.',
+    tech: ['Next.js', 'Express', 'Prisma', 'PostgreSQL', 'GetStream', 'JWT', 'Cloudinary', 'Docker'],
+    tags: ['Videollamadas', 'Full Stack', 'Trabajo en equipo'],
+    github: 'https://github.com/No-Country-simulation/S08-26-equipo-5',
+    demo: 'https://web-ruddy-mu-22.vercel.app',
+    video: null,
+    youtube: null,
+    poster: meetflowPoster,
   },
   {
     id: 2,
